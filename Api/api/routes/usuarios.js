@@ -3,7 +3,7 @@ var router = express.Router();
 var MongoClient = require("mongodb").MongoClient;
 
 
-/* GET users listing. */
+/* OBTENER USUARIOS */
 router.get("/", function (req, res, next) {
   MongoClient.connect(process.env.DB_HOST, function (err, client) {
     if (err) throw err;
@@ -21,6 +21,7 @@ router.get("/", function (req, res, next) {
   });
 });
 
+/* OBTENER INFORMACIÓN DE UN SOLO USUARIO */
 router.get("/:id", function (req, res, next) {
   const ObjectId = require('mongodb').ObjectId; 
   MongoClient.connect(process.env.DB_HOST, function (err, client) {
@@ -38,7 +39,7 @@ router.get("/:id", function (req, res, next) {
       });
   });
 });
-
+/* AÑADIR USUARIO */
 router.post("/", function (req, ress, next) {
   MongoClient.connect(process.env.DB_HOST, function (err, client) {
     if (err) throw err;
@@ -52,6 +53,7 @@ router.post("/", function (req, ress, next) {
     });
   });
 });
+/* EDITAR USUARIO */
 router.put("/:id", function (req, ress, next) {
   const ObjectId = require('mongodb').ObjectId; 
   MongoClient.connect(process.env.DB_HOST, function (err, client) {
@@ -67,7 +69,7 @@ router.put("/:id", function (req, ress, next) {
     });
   });
 });
-
+/* ELIMINAR USUARIO */
 router.delete("/:id", function (req, ress, next) {
   const ObjectId = require('mongodb').ObjectId; 
   MongoClient.connect(process.env.DB_HOST, function (err, client) {
